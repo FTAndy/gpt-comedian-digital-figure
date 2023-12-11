@@ -18,6 +18,13 @@ npm install
 npm run start
 ```
 
+`.env` file, register on https://www.opensubtitles.com/
+```bash
+OPEN_SUBTITLE=XXX
+OPEN_SUBTITLE_USERNAME=XXX
+OPEN_SUBTITLE_PASSWORD=XXX
+```
+
 ## Usage
 The main functionality is centered around scraping comedian data and subtitles. You can start by exploring `main.ts` for the primary application logic.
 
@@ -48,7 +55,3 @@ This project is for educational purposes. Please ensure to comply with IMDb's te
 
 ## Contact
 For any inquiries, please open an issue on the GitHub repository: [gpt-comedian-digital-figure](https://github.com/FTAndy/gpt-comedian-digital-figure)
-
----
-
-This README is a basic template and can be expanded based on the specific needs and developments of the project.
