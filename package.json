@@ -2,7 +2,6 @@
   "name": "node-typescript-boilerplate",
   "version": "0.0.0",
   "description": "Minimalistic boilerplate to quick-start Node.js development in TypeScript.",
-  "type": "module",
   "engines": {
     "node": ">= 18.12 <19"
   },
@@ -22,23 +21,23 @@
     "typescript": "~5.1"
   },
   "scripts": {
-    "start": "npm run build && node build/src/main.js",
+    "start": "npm run build && node build/main.js",
     "clean": "rimraf coverage build tmp",
-    "prebuild": "npm run lint",
-    "build": "tsc -p tsconfig.json",
+    "build": "rimraf ./build && tsc",
     "build:watch": "tsc -w -p tsconfig.json",
     "build:release": "npm run clean && tsc -p tsconfig.release.json",
-    "lint": "eslint . --ext .ts --ext .mts",
-    "test": "jest --coverage",
-    "prettier": "prettier --config .prettierrc --write .",
-    "test:watch": "jest --watch"
+    "prettier": "prettier --config .prettierrc --write ."
   },
   "author": "Jakub Synowiec <jsynowiec@users.noreply.github.com>",
   "license": "Apache-2.0",
   "dependencies": {
+    "axios": "^1.6.2",
     "dotenv": "^16.3.1",
     "global-agent": "^3.0.0",
     "opensubtitles-node-sdk": "^1.0.2",
+    "puppeteer": "^21.6.0",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2",
     "tslib": "~2.6"
   },
   "volta": {
