@@ -11,12 +11,14 @@ This project focuses on utilizing Puppeteer and other tools to scrape and analyz
 ## Installation
 Clone the repository and install the dependencies using npm:
 
+
 ```bash
-git clone https://github.com/FTAndy/gpt-comedian-digital-figure.git
-cd gpt-comedian-digital-figure
 npm install
-npm run start
 ```
+
+
+## Usage
+The main functionality is centered around scraping comedian data and subtitles. You can start by exploring `main.ts` for the primary application logic.
 
 `.env` file, register on https://www.opensubtitles.com/
 ```bash
@@ -25,8 +27,11 @@ OPEN_SUBTITLE_USERNAME=XXX
 OPEN_SUBTITLE_PASSWORD=XXX
 ```
 
-## Usage
-The main functionality is centered around scraping comedian data and subtitles. You can start by exploring `main.ts` for the primary application logic.
+```bash
+npm run start
+```
+
+The subtitle files will be generated in `./build/temp` folder, upload them to GPT background
 
 ## Code Structure
 - `utils.ts`: Contains utility functions for managing asynchronous tasks.
