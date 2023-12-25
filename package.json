@@ -34,6 +34,7 @@
     "axios": "^1.6.2",
     "dotenv": "^16.3.1",
     "global-agent": "^3.0.0",
+    "openai": "^4.24.1",
     "opensubtitles-node-sdk": "^1.0.2",
     "puppeteer": "^21.6.0",
     "puppeteer-extra": "^3.3.6",

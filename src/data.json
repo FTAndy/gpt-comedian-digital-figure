@@ -1,0 +1,92 @@
+[
+  {
+    "object": "file",
+    "id": "file-qK5uZ8EFX7EKmdzTN2Ff3ixF",
+    "purpose": "assistants",
+    "filename": "846%20-%20Dave%20Chappelle.en.srt",
+    "bytes": 28250,
+    "created_at": 1703498730,
+    "status": "processed",
+    "status_details": null
+  },
+  {
+    "object": "file",
+    "id": "file-6dUanTZytqbHOa6coZR2PGjg",
+    "purpose": "assistants",
+    "filename": "Dave.Chappelle.The.Closer.2021.1080p.NF.WEB-DL.DDP5.1.Atmos.x264-NPMS.srt",
+    "bytes": 90727,
+    "created_at": 1703498730,
+    "status": "processed",
+    "status_details": null
+  },
+  {
+    "object": "file",
+    "id": "file-w8f4ohwC5AFHCAdp40C9Pc9o",
+    "purpose": "assistants",
+    "filename": "Last%20Man%20Standing%20-%2002x13%20-%20Whats%20In%20a%20Name.LOL.English.C.orig.Addic7ed.com.srt",
+    "bytes": 35551,
+    "created_at": 1703498730,
+    "status": "processed",
+    "status_details": null
+  },
+  {
+    "object": "file",
+    "id": "file-DLll0r9AVzK84XuWopHj45ce",
+    "purpose": "assistants",
+    "filename": "Dave.Chappelle.Sticks.and.Stones.2019.720p.NF.WEB-DL.DDP5.1.x264-NTG.srt",
+    "bytes": 78460,
+    "created_at": 1703498735,
+    "status": "processed",
+    "status_details": null
+  },
+  {
+    "object": "file",
+    "id": "file-ygLNQsl284QvnuyYVrYT33Yb",
+    "purpose": "assistants",
+    "filename": "Dave.Chappelle.The.Bird.Revelation.2017.1080p.Netflix.WEB-DL.DD5.1.x264-QOQ__english.srt",
+    "bytes": 64609,
+    "created_at": 1703498736,
+    "status": "processed",
+    "status_details": null
+  },
+  {
+    "object": "file",
+    "id": "file-LzjZb0oHMkvUviZiKx9qcZJW",
+    "purpose": "assistants",
+    "filename": "Dave.Chappelle.Equanimity.2017.1080p.NF.WEB-DL.DD5.1.H.264-SiGMA.EtHD._english.srt",
+    "bytes": 81327,
+    "created_at": 1703498737,
+    "status": "processed",
+    "status_details": null
+  },
+  {
+    "object": "file",
+    "id": "file-HRpvL7vzXz8cfEWUGd4MnjZR",
+    "purpose": "assistants",
+    "filename": "Dave%20Chappelle%20-%20For%20What%20Its%20Worth.srt",
+    "bytes": 75418,
+    "created_at": 1703498741,
+    "status": "processed",
+    "status_details": null
+  },
+  {
+    "object": "file",
+    "id": "file-PZ0BPxAI9NlK5RH2YlWyE5dB",
+    "purpose": "assistants",
+    "filename": "Dave.Chappelle.The.Age.of.Spin.2017.WEBRip.1080p.10bit.5.1.x265.HEVC-Qman%5BUTR%5D_ENG_LY.srt",
+    "bytes": 87292,
+    "created_at": 1703498742,
+    "status": "processed",
+    "status_details": null
+  },
+  {
+    "object": "file",
+    "id": "file-Q8x7tXLZq7p9c6pHBwe1WkS3",
+    "purpose": "assistants",
+    "filename": "Dave.Chappelle.Killin.Them.Softly.2000.srt",
+    "bytes": 78772,
+    "created_at": 1703498746,
+    "status": "processed",
+    "status_details": null
+  }
+]

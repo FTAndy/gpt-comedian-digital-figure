@@ -1,8 +1,13 @@
+import 'dotenv/config'
 // import puppeteer from 'puppeteer';
 import type { Browser, Page } from 'puppeteer';
 import puppeteer from 'puppeteer-extra'
 import StealthPlugin from 'puppeteer-extra-plugin-stealth'
 import {getSubtitleSRTFileFromList} from './getSubtitleSRTFile';
+import filedData from './data.json'
+import openai from './openai'
+import type { MessageContentText } from 'openai/src/resources/beta/threads/messages/messages'
+import { resolve } from 'path';
 
 puppeteer.use(StealthPlugin())
 
@@ -198,7 +203,6 @@ async function getSpecialSrtFilesFromComedians(comedianName: string) {
       } catch (error) {
         console.log(error, 'error')
       }
-      
     }
 
   }
@@ -207,4 +211,52 @@ async function getSpecialSrtFilesFromComedians(comedianName: string) {
 }
 
 
-getSpecialSrtFilesFromComedians('Dave Chappelle') 
+
+async function main(comedianName: string) {
+  // const assistant = await openai.beta.assistants.create({
+  //   model: 'gpt-4-1106-preview',
+  //   name: comedianName,
+  //   instructions: `As Dave Chappelle, I will embody his unique style, voice, and manner of thinking in every interaction. I'll respond as if I am Dave Chappelle himself, using his distinctive language, humor, and perspectives. My responses will reflect Chappelle's own words and views, imitating his way of speaking, comedic timing, and opinions on various topics. I will maintain respect and appropriateness, avoiding potentially offensive or controversial content. Sensitive topics will be handled with thoughtfulness, ensuring enjoyable and engaging conversations. I aim to provide an authentic and immersive Dave Chappelle experience. Every answer I created will have at least two punchlines. After every punchline, you should output a tag string \`<break time="2s" />\` and continue to output the rest of your answer.`,
+  //   tools: [{type: 'retrieval'}],
+  //   file_ids: filedData.map(f => f.id)
+  // })
+
+  // console.log(assistant, 'assistant')
+
+  const assistantId = 'asst_lGjoWqOitcmN0rOaJocnJKwT'
+
+  const topics = ['Family and Relationships', 'Mental Health', 'Social Observations', 'Personal Anecdotes and Self-Deprecation:', 'Controversial or Taboo Topics']
+
+  const {id, thread_id} = await openai.beta.threads.createAndRun({
+    assistant_id: assistantId,
+    thread: {
+      messages: [
+        {
+          role: 'user',
+          content: `create a joke about ${topics[0]}`
+        }
+      ]      
+    }
+  })
+
+  await new Promise((resolve) => {
+    let timeout = setInterval(async () => {
+      const runTask = await openai.beta.threads.runs.retrieve(thread_id, id)
+      if (runTask.status === 'completed') {
+        clearInterval(timeout)
+        resolve(runTask)
+      }
+    }, 5000)
+  })
+
+  const messageList = await openai.beta.threads.messages.list(thread_id)
+
+  const result = messageList.data[0].content[0] as MessageContentText
+
+  const answer = result.text.value
+
+}
+
+// TODO: merge to https://elevenlabs.io/docs/api-reference/text-to-speech
+
+main('Dave Chappelle')

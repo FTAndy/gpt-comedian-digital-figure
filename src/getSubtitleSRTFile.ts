@@ -2,8 +2,10 @@ import 'dotenv/config'
 // import 'global-agent/bootstrap';
 import axios from 'axios'
 import fs from 'fs'
+import fetch from 'node-fetch';
 import fsPromise from 'fs/promises'
 import path from 'path'
+import openai from './openai'
 import { maxLimitedAsync } from './utils'
 const OpenSubtitles = require('opensubtitles-node-sdk');
 
@@ -43,18 +45,20 @@ export default async function getSubtitleSRTFile(specialName: string, storePath:
 
     const link = downloadResponse?.link
     if (link) {
-      const response = await axios({
-        method: 'get',
-        url: link,
-        responseType: 'stream'
-      })
-      const srtFile = path.resolve(
-        storePath,
-        // trimSpecial(`${comedianName}-${specialName}-${subtitle.lan}.srt`),
-        specialName + '.srt'
-      );
+      const file = await openai.files.create({ file: await fetch(link), purpose: 'assistants' });
+      return file
+      // const response = await axios({
+      //   method: 'get',
+      //   url: link,
+      //   responseType: 'stream'
+      // })
+      // const srtFile = path.resolve(
+      //   storePath,
+      //   // trimSpecial(`${comedianName}-${specialName}-${subtitle.lan}.srt`),
+      //   specialName + '.srt'
+      // );
 
-      response.data.pipe(fs.createWriteStream(srtFile));
+      // response.data.pipe(fs.createWriteStream(srtFile));
     }
     
   }
@@ -83,10 +87,12 @@ export async function getSubtitleSRTFileFromList (list: Array<string>, comedianN
     console.log('error', error)
   }
 
-  await maxLimitedAsync({
+  const files = await maxLimitedAsync({
     max: 3,
     tasks: list.map(specialName => {
       return () => getSubtitleSRTFile(specialName, comedianDir)
     })
   })
+  console.log(files, 'files')
+  return files.filter(f => f)
 }
