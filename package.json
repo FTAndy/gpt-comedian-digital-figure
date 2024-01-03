@@ -22,6 +22,7 @@
   },
   "scripts": {
     "start": "npm run build && node build/main.js",
+    "start:textToSpeech": "npm run build && node build/textToSpeech.js",
     "clean": "rimraf coverage build tmp",
     "build": "rimraf ./build && tsc",
     "build:watch": "tsc -w -p tsconfig.json",
@@ -31,15 +32,21 @@
   "author": "Jakub Synowiec <jsynowiec@users.noreply.github.com>",
   "license": "Apache-2.0",
   "dependencies": {
+    "audio-speaker": "^1.5.1",
     "axios": "^1.6.2",
     "dotenv": "^16.3.1",
     "global-agent": "^3.0.0",
+    "langchain": "^0.0.214",
+    "node-fetch": "^2.7.0",
     "openai": "^4.24.1",
     "opensubtitles-node-sdk": "^1.0.2",
-    "puppeteer": "^21.6.0",
+    "puppeteer": "*",
     "puppeteer-extra": "^3.3.6",
     "puppeteer-extra-plugin-stealth": "^2.11.2",
     "tslib": "~2.6"
+  },
+  "peerDependencies": {
+    "puppeteer": "*"
   },
   "volta": {
     "node": "18.12.1"

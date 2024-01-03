@@ -6,6 +6,7 @@ import StealthPlugin from 'puppeteer-extra-plugin-stealth'
 import {getSubtitleSRTFileFromList} from './getSubtitleSRTFile';
 import filedData from './data.json'
 import openai from './openai'
+import { OpenAIAssistantRunnable } from "langchain/experimental/openai_assistant";
 import type { MessageContentText } from 'openai/src/resources/beta/threads/messages/messages'
 import { resolve } from 'path';
 
@@ -199,7 +200,7 @@ async function getSpecialSrtFilesFromComedians(comedianName: string) {
     );
     if (specials) {
       try {
-        await getSubtitleSRTFileFromList(specials.allSpecials.map(s => s.name), specials.comedianName)  
+        return await getSubtitleSRTFileFromList(specials.allSpecials.map(s => s.name), specials.comedianName)  
       } catch (error) {
         console.log(error, 'error')
       }
@@ -246,7 +247,7 @@ async function main(comedianName: string) {
         clearInterval(timeout)
         resolve(runTask)
       }
-    }, 5000)
+    }, 500)
   })
 
   const messageList = await openai.beta.threads.messages.list(thread_id)
@@ -254,6 +255,8 @@ async function main(comedianName: string) {
   const result = messageList.data[0].content[0] as MessageContentText
 
   const answer = result.text.value
+
+  console.log(answer, 'answer')
 
 }
 
